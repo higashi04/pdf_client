@@ -1,0 +1,12 @@
+.userBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 100vw;
+}
+.userDataRow{
+    font-size: 1.3rem;
+    font-weight: bold;
+}

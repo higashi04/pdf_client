@@ -1,0 +1,16 @@
+.signUp-bg {
+    background-color: rgba(51, 122, 108, 0.658);
+}
+.signUp-header, .signUp-radios {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#errorMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0; 
+    font-size: 1.2rem;
+    color: red;
+}
