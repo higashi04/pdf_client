@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./User.css";
 const User = () => {
   const [userData, setUserData] = useState("");
@@ -38,6 +38,7 @@ const User = () => {
         <div className="row my-3">
         <div className="col-6">
           <button className="btn btn-primary" onClick={() => navigate("/altaHermanos")} >Editar Hermanos</button>
+          <Link to={"/consultarHermanos"} className="btn btn-outline-primary" > Consultar Hermanos registrados </Link>
         </div>
         <div className="col-6">
           <button className="btn btn-primary">Crear Programa</button>

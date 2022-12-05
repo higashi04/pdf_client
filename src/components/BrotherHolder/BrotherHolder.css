@@ -1,0 +1,12 @@
+.brotherHolderBox{
+    margin: 15px 15px;
+    background-color: #fff;
+    border-radius: 15px;
+    height: 25vh;
+}
+.brotherHolderChangeStatus {
+    margin-top: 15px;
+    border: 2px solid black;
+    padding: 15px 0;
+    border-radius: 15px;
+}

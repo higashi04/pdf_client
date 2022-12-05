@@ -5,6 +5,7 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import User from './pages/User/User';
 import Brothers from './pages/Brothers/Brothers';
+import SeeBrothers from './pages/SeeBrothers/SeeBrothers';
 
 import Navibar from './components/Navibar/Navibar';
 
@@ -19,6 +20,7 @@ function App() {
             <Route path='/signup' element={<SignUp/>} />
             <Route path='/user' element={<User/>} />
             <Route path='/altaHermanos' element={<Brothers/>} />
+            <Route path='/consultarHermanos' element={<SeeBrothers/>} />
           </Routes>
         </div>
       </BrowserRouter>

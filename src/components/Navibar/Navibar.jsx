@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Navbar, Container } from "react-bootstrap";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { FaSignOutAlt, FaUser, FaHome } from "react-icons/fa";
+import { FaSignOutAlt, FaHome } from "react-icons/fa";
 import { logout, reset } from "../../redux/auth/authSlice";
 
 const Navibar = () => {
@@ -33,7 +33,7 @@ const Navibar = () => {
           expand="lg"
           fixed="top"
           className={
-            scroll ? "navib navbar-light bg-light" : "navib navbar-light"
+            scroll ? "navib navbar-light bg-light mb-5" : "navib navbar-light mb-5"
           }
         >
           <Container>
