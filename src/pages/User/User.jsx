@@ -17,7 +17,7 @@ const User = () => {
 
   return (
     <>
-      <div className="userBox my-5">
+      <div className="userBox mt-5">
         <div className="row">
           <h1>Bienvenido, {userData.firstName}</h1>
         </div>
@@ -37,11 +37,23 @@ const User = () => {
       <div className="userBox my-5">
         <div className="row my-3">
         <div className="col-6">
-          <button className="btn btn-primary" onClick={() => navigate("/altaHermanos")} >Editar Hermanos</button>
-          <Link to={"/consultarHermanos"} className="btn btn-outline-primary" > Consultar Hermanos registrados </Link>
+          <div className="row my-3">
+            <Link to={"/altaHermanos"} className="btn btn-primary">Registrar Hermanos</Link>
+          </div>
+          <div className="row my-3">
+            <Link to={'/signup'} className="btn btn-outline-secondary">Registrar Usuarios</Link>
+          </div>
+          <div className="row my-3">
+            <Link to={"/consultarHermanos"} className="btn btn-outline-primary" > Consultar Hermanos registrados </Link>
+          </div>
         </div>
         <div className="col-6">
-          <button className="btn btn-primary">Crear Programa</button>
+          <div className="row my-3">
+            <Link to={"/acomodadores"} className="btn btn-outline-primary mx-3">Programa Acomodadores</Link>
+          </div>
+          <div className="row my-3">
+            <Link className="btn btn-outline-secondary mx-3">Programa Vida y Ministerio </Link>
+          </div>
         </div>
         </div>
       </div>
