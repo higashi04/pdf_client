@@ -7,6 +7,7 @@ import User from './pages/User/User';
 import Brothers from './pages/Brothers/Brothers';
 import SeeBrothers from './pages/SeeBrothers/SeeBrothers';
 import Acomodadores from './pages/programaAcomodadores/Acomodadores';
+import RolSemanalAcomodadores from './pages/RolSemanalAcomodadores/RolSemanalAcomodadores';
 
 import Navibar from './components/Navibar/Navibar';
 
@@ -14,15 +15,18 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Navibar/>
+      
         <div>
           <Routes>
-            <Route path='/' element={<Login/>} />
-            <Route path='/signup' element={<SignUp/>} />
-            <Route path='/user' element={<User/>} />
-            <Route path='/altaHermanos' element={<Brothers/>} />
-            <Route path='/consultarHermanos' element={<SeeBrothers/>} />
-            <Route path='/acomodadores' element={<Acomodadores/>} />
+            <Route path='/' element={<Navibar/>} >
+              <Route index element={<Login/>} />
+              <Route path='/signup' element={<SignUp/>} />
+              <Route path='/user' element={<User/>} />
+              <Route path='/altaHermanos' element={<Brothers/>} />
+              <Route path='/consultarHermanos' element={<SeeBrothers/>} />
+              <Route path='/acomodadores' element={<Acomodadores/>} />
+              <Route path='/acomodadores/:rolId' element={<RolSemanalAcomodadores/>} />
+            </Route>
           </Routes>
         </div>
       </BrowserRouter>
