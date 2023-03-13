@@ -10,6 +10,8 @@ const RolSemanalAcomodadores = () => {
 
   const [weekData, setWeekData] = useState(null);
   const [loaded, isLoaded] = useState(false);
+  const [btnSubmitDisabled, setBtnSubmitDisabled] = useState(false)
+
   const [audioVideo, setAudioVideo] = useState("");
   const [mezcladora, setMezcladora] = useState("");
   const [acomodadorUno, setAcomodadorUno] = useState("");
@@ -53,10 +55,25 @@ const RolSemanalAcomodadores = () => {
         recibidorEntreSemana: recibidorEntreSemana,
         recibidorFinSemana: recibidorFinSemana,
         preside: preside,
-        aseo: aseo
+        aseo: aseo,
+        _id: rolId
       }
     }
-    
+    try {
+      const response = await fetch(apiPoint + "save", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+      });
+      if(response.ok) {
+        console.log("success")
+      } else {
+        throw response
+      }
+    } catch (error) {
+      const jsonErr = await error.json();
+      console.error(jsonErr)
+    }
   }
 
   if (!loaded) {
@@ -209,7 +226,7 @@ const RolSemanalAcomodadores = () => {
           </div>
         </div>
       </div>
-      <button className="mx-5 btn btn-primary">Guardar</button>
+      <button className="mx-5 btn btn-primary" onClick={handleSubmit}>Guardar</button>
     </div>
   );
 };
