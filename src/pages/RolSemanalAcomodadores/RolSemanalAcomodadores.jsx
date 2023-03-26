@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {  showAlert } from "../../redux/err/alertSlice";
 
 //import FormaAcomodadores from "../../components/FormaAcomodadores/FormaAcomodadores";
 import TextInput from "../../components/TextInput/TextInput";
@@ -7,6 +9,7 @@ import TextInput from "../../components/TextInput/TextInput";
 const apiPoint = "http://localhost:8080/semanas/";
 
 const RolSemanalAcomodadores = () => {
+  const dispatch = useDispatch();
   const { rolId } = useParams();
 
   const [weekData, setWeekData] = useState(null);
@@ -108,7 +111,7 @@ const RolSemanalAcomodadores = () => {
         });
         const json = await response.json();
         setWeekData(json);
-        console.log(json);
+        // console.log(json);
         setValues(
           {
             audioVideo: json.audioVideo,
@@ -127,7 +130,6 @@ const RolSemanalAcomodadores = () => {
         isLoaded(true);
       };
       fetchWeeks();
-      console.log(loaded)
     }
   }, [loaded, rolId, setValues]);
 
@@ -139,19 +141,6 @@ const RolSemanalAcomodadores = () => {
     }));
   };
   
-  // const [audioVideo, setAudioVideo] = useState("");
-  // const [mezcladora, setMezcladora] = useState("");
-  // const [acomodadorUno, setAcomodadorUno] = useState("");
-  // const [acomodadorDos, setAcomodadorDos] = useState("");
-  // const [accesosUno, setAccesosUno] = useState("");
-  // const [accesosDos, setAccesosDos] = useState("");
-  // const [lector, setLector] = useState("");
-  // const [preside, setPreside] = useState("");
-  // const [recibidorEntreSemana, setRecibidorEntreSemana] = useState("");
-  // const [recibidorFinSemana, setRecibidorFinSemana] = useState("");
-  // const [aseo, setAseo] = useState("");
-
-
   const handleSubmit = async () => {
     const data = {
       acomodadores: {
@@ -181,6 +170,7 @@ const RolSemanalAcomodadores = () => {
       }
     } catch (error) {
       const jsonErr = await error.json();
+      dispatch(showAlert(jsonErr.Message))
       console.error(jsonErr);
     } finally {
       setBtnSubmitDisabled(false);

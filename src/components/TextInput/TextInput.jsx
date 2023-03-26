@@ -2,10 +2,11 @@ import React from "react";
 import {BsSearch} from 'react-icons/bs'
 
 const TextInput = ({data, onInputChange}) => {
-    const handleInputChange = (event) => {
-        const inputValue = event.target.value;
-        onInputChange(inputValue);
-      }
+
+  const handleClick = () => {
+    alert(data.Name)
+  };
+
   return (
     <div className="input-group mb-3">
       <span className="input-group-text">{data.Text}</span>
@@ -15,8 +16,9 @@ const TextInput = ({data, onInputChange}) => {
         className="form-control"
         type="text"
         onChange={onInputChange}
+        readOnly = {data.Text !== "Aseo"}
       />
-      {data.Text !== "Aseo" && <button className="btn btn-dark"> <BsSearch/> </button>}
+      {data.Text !== "Aseo" && <button className="btn btn-dark" onClick={handleClick}> <BsSearch/> </button>}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navbar, Container } from "react-bootstrap";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { FaSignOutAlt, FaHome } from "react-icons/fa";
 import { logout, reset } from "../../redux/auth/authSlice";
@@ -57,7 +57,6 @@ const Navibar = () => {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        <Outlet />
       </>
     )
 }
