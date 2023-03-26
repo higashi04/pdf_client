@@ -7,8 +7,6 @@ import { hideAlert } from '../../redux/err/alertSlice';
 function AlertDismissible() {
   const dispatch = useDispatch();
   const {show, message} = useSelector(state => state.alert);
-  console.log(show, message)
-
   const handleClose = () => {
     dispatch(hideAlert());
   };

@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {  showAlert } from "../../redux/err/alertSlice";
 import "./SignUp.css";
 import ErrorBox from "../../components/ErrorBox/ErrorBox";
 
@@ -17,6 +19,8 @@ const SignUp = () => {
   const [lastName, setLastName] = useState(null);
   const [congregacion, setCongregacion] = useState(null);
   const [passwordError, setPasswordError] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleSignUp = async() =>{
     try {
@@ -48,7 +52,7 @@ const SignUp = () => {
       }
       if(passwordMsg.length > 0) { 
         setPasswordError(true)
-        throw new Error("password validation invalid") 
+        throw new Error("Favor de revisar su contraseña.") 
       }
       await fetch("http://localhost:8080/usuario/registrarse", {
         method: "POST",
@@ -57,7 +61,7 @@ const SignUp = () => {
         body: JSON.stringify(data)
       })
     } catch (error) {
-      
+      dispatch(showAlert(error))
       console.error(error)
     }
   }

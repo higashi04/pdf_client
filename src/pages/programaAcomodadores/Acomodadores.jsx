@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { startOfWeek, endOfWeek, addWeeks, format } from "date-fns";
 import { es } from "date-fns/locale";
 import SemanaBox from "../../components/SemanaBox/SemanaBox";
+import { useDispatch } from "react-redux";
+import {  showAlert } from "../../redux/err/alertSlice";
 
 const Acomodadores = () => {
+  const dispatch = useDispatch();
   const today = new Date();
   const startDate = startOfWeek(addWeeks(today, -2)); //get two previous weeks
   const endDate = endOfWeek(addWeeks(today, 15)); // up to fifteen weeks
@@ -19,34 +22,16 @@ const Acomodadores = () => {
     currentDate.setDate(currentDate.getDate() + 7); //moves to next week
   }
 
-  // const [isLoaded, setIsloaded] = useState(false);
-  // const [weeks, setWeeks] = useState([]);
   const { user } = useSelector((state) => state.auth);
-  // const apiPoint = "http://localhost:8080/semanas/";
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user === null) {
       navigate("/");
+      dispatch(showAlert("Favor de iniciar sesión."))
     }
   });
 
-  // useEffect(() => {
-  //   if(isLoaded === false)
-  //   {
-  //     const fetchWeeks = async() => {
-  //       const response = await fetch(apiPoint + "getWeeks",
-  //       {
-  //         method: "GET",
-  //         headers: {'Content-Type': 'application/json'},
-  //       });
-  //       const json = await response.json()
-  //       setWeeks(json.allWeeks);
-  //       setIsloaded(true)
-  //     }
-  //     fetchWeeks()
-  //   }
-  // }, [setWeeks, isLoaded, setIsloaded, weeks])
 
   return (
     <>
@@ -59,7 +44,6 @@ const Acomodadores = () => {
           />
         ))}
 
-        {/* {weeks.map(week => <SemanaBox key={week._id} data={week} />)} */}
       </div>
     </>
   );

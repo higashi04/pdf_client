@@ -1,12 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {  showAlert } from "../../redux/err/alertSlice";
 import './Brothers.css'
 
 const Brothers = () => {
   const [name, setName] = useState(null);
   const [active, setActive] = useState(false);
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const apiPoint = 'http://localhost:8080/bros/';
 
   const handleCheckChange = () =>{
@@ -37,7 +40,7 @@ const Brothers = () => {
       }
     } catch (error) {
       const err = await error.json()
-      console.error(err)
+      dispatch(showAlert(err.Message))
     }
   }
 

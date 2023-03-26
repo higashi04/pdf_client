@@ -133,8 +133,8 @@ const RolSemanalAcomodadores = () => {
     }
   }, [loaded, rolId, setValues]);
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleInputChange = (name, value) => {
+    // const { name, value } = event.target;
     setValues(prevValues => ({
       ...prevValues,
       [name]: value
@@ -156,6 +156,7 @@ const RolSemanalAcomodadores = () => {
         _id: rolId,
       },
     };
+    console.log(data)
     try {
       setBtnSubmitDisabled(true);
       const response = await fetch(apiPoint + "save", {
@@ -182,13 +183,12 @@ const RolSemanalAcomodadores = () => {
   }
   return (
     <div className="mt-5">
+      <br />
       <h1 className="mx-5">Fecha: {weekData.semana}</h1>
       <div className="container">
         <div className="row my-3">
           {dataAcomodadores.map((data) => (
-            <div key={data.id} className="col-6">
-              <TextInput key={data.id} data={data} onInputChange={handleInputChange} />
-            </div>
+              <TextInput key={data.id} data={data} onInputChange={(name, value) => handleInputChange(name, value)} />
           ))}
         </div>
       </div>
